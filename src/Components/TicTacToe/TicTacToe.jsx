@@ -10,6 +10,18 @@ const TicTacToe = () => {
   let [count,setCount] = useState(0);
   let [lock,setLock] = useState(false);
   let titleRef = useRef(null);
+  
+  let box1 = useRef(null);
+  let box2 = useRef(null);
+  let box3 = useRef(null);
+  let box4 = useRef(null);
+  let box5 = useRef(null);
+  let box6 = useRef(null);
+  let box7 = useRef(null);
+  let box8 = useRef(null);
+  let box9 = useRef(null);
+
+  let box_array = [box1,box2,box3,box4,box5,box6,box7,box8,box9] 
 
   const toggle = (e, num) => {
     if(lock){
@@ -59,26 +71,29 @@ const TicTacToe = () => {
   const reset = () => {
     setLock(false)
     data = ["","","","","","","","",""];
-    titleRef.current.innerHTML = `Tic Tac Toe Game In <span class="text-green-400">React</span>` 
+    titleRef.current.innerHTML = `Tic Tac Toe Game In <span class="text-green-400">React</span>`
+    box_array.map((e) => {
+      e.current.innerHTML = ""
+    })
   }
   return (
-    <div className="container">
+    <div className="container"> 
       <h1 className="title" ref={titleRef}>Tic Tac Toe Game In <span class="text-green-400">React</span></h1>
       <div className="board" class="h-96 w-96 m-auto flex justify-center mb-48">
         <div className="row1">
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,0)}}></div>
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,1)}}></div>
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,2)}}></div>
+          <div className="boxes" ref={box1} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,0)}}></div>
+          <div className="boxes" ref={box2} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,1)}}></div>
+          <div className="boxes" ref={box3} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,2)}}></div>
         </div>
         <div className="row2">
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,3)}}></div>
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,4)}}></div>
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,5)}}></div>
+          <div className="boxes" ref={box4} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,3)}}></div>
+          <div className="boxes" ref={box5} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,4)}}></div>
+          <div className="boxes" ref={box6} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,5)}}></div>
         </div>
         <div className="row3">
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,6)}}></div>
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,7)}}></div>
-          <div className="boxes" class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,8)}}></div>
+          <div className="boxes" ref={box7} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,6)}}></div>
+          <div className="boxes" ref={box8} class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,7)}}></div>
+          <div className="boxes" ref={box9}class="flex rounded-xl h-44 w-44 cursor-pointer bg-gray-800 bg-opacity-50 mx-1 my-2" onClick={(e) => {toggle(e,8)}}></div>
         </div>
       </div>
       <button type="button" class='flex max-w-sm bg-gradient-to-r from-green-400 to-blue-600 hover:from-green-600 hover:to-blue-600 focus:outline-none text-white text-md tracking-wider uppercase font-bold shadow-md rounded-2xl mx-auto p-3' onClick={()=>reset()}>Reset</button>
